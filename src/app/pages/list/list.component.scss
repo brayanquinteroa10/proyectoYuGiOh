@@ -1,0 +1,17 @@
+.list {
+    width: 80%;
+    margin: auto;
+    margin-top: 2em;
+    .mat-form-field {
+        width: 100%;
+    }
+}
+
+.cards{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); // reduce el tamaño mínimo de las tarjetas para permitir más tarjetas por fila
+    grid-gap: 2em; // aumenta el espacio entre las tarjetas para darles más espacio para respirar
+    margin-top: 1em; // añade un poco de espacio entre el formulario de búsqueda y las tarjetas
+    align-items: start; // alinea las tarjetas al inicio del grid para una distribución más uniforme
+    justify-items: center; // centra las tarjetas en sus respectivas celdas del grid
+}

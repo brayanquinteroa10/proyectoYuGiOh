@@ -1,0 +1,82 @@
+<div class="button-container">
+  <button
+    mat-mini-fab
+    color="accent"
+    class="navigate_before"
+    (click)="goToList()"
+  >
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+</div>
+
+<div class="container" *ngIf="card$ | async as card">
+  <mat-card class="detail-card">
+    <mat-card-header>
+      <div
+        mat-card-avatar
+        class="header-image"
+        [style.background-image]="
+          'url(' + card.card_images[0].image_url_cropped + ')'
+        "
+      ></div>
+      <mat-card-title> {{ card.name }} </mat-card-title>
+      <mat-card-subtitle>{{ card.type }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-image
+      [src]="card.card_images[0].image_url"
+      alt="Photo of a {{ card.name }}"
+    />
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p *ngIf="card.desc">
+        <strong>{{ card.desc }}</strong>
+      </p>
+      <mat-divider></mat-divider>
+      <p *ngIf="card.atk"><strong>Card Attack:</strong> {{ card.atk }}</p>
+      <p *ngIf="card.def"><strong>Card Defense:</strong> {{ card.def }}</p>
+      <p *ngIf="card.race"><strong>Card Race:</strong> {{ card.race }}</p>
+      <p *ngIf="card.level"><strong>Card Level:</strong> {{ card.level }}</p>
+      <p *ngIf="card.attribute">
+        <strong>Card Attribute:</strong> {{ card.attribute | titlecase }}
+      </p>
+      <mat-divider></mat-divider>
+      <table
+        mat-table
+        [dataSource]="dataSource"
+        matSort
+        (matSortChange)="announceSortChange($event)"
+        class="mat-elevation-z8"
+      >
+        <!-- Market Column -->
+        <ng-container matColumnDef="market">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by name"
+          >
+            Market
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.market }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="price">
+          <th
+            mat-header-cell
+            *matHeaderCellDef
+            mat-sort-header
+            sortActionDescription="Sort by price"
+          >
+            Price
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>

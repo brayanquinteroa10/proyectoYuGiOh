@@ -1,0 +1,19 @@
+.ygo-card {
+    max-width: 260px;
+    text-align: center; /* Alinea el texto del título al centro */
+    transition: transform 0.3s; /* Añade una transición suave al efecto de escala */
+  }
+  
+  .mat-card-title {
+    font-size: 16px; /* Tamaño de fuente ajustable según tus preferencias */
+    margin: 0; /* Elimina cualquier margen predeterminado */
+  }
+  
+  .header-image {
+    background-size: cover;
+  }
+  
+  .ygo-card:hover {
+    transform: scale(1.05);
+    background-image: linear-gradient(to bottom right, #3f51b5, #ff4081);
+  }

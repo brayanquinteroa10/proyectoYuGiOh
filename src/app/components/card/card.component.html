@@ -1,0 +1,7 @@
+<mat-card class="ygo-card" (click)="goToCard()">
+    <mat-card-header>
+      <div mat-card-avatar class="header-image" [style.background-image]="'url(' + card.card_images[0].image_url_cropped + ')'"></div>
+      <mat-card-title> {{ card.type }} </mat-card-title>
+    </mat-card-header>
+    <img mat-card-image [src]="card.card_images[0].image_url" alt="Photo of a {{ card.name }}">
+  </mat-card>

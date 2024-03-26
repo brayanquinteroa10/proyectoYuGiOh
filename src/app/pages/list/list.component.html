@@ -1,0 +1,18 @@
+<div class="list" 
+    infinite-scroll 
+    [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="100"
+    (scrolled)="onScroll()">
+    <mat-form-field class="mat-form-field">
+        <mat-label>Buscar una carta</mat-label>
+        <input matInput type="text" [formControl]="formControl">
+        @if (formControl.value) {
+          <button matSuffix mat-icon-button aria-label="Clear" (click)="formControl.setValue('')">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
+      </mat-form-field>
+      <div class="cards">
+        <app-card *ngFor="let card of cards" [card]="card"></app-card>
+      </div>
+</div>
